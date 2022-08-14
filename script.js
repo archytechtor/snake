@@ -100,6 +100,7 @@ const collisionBorder = () => {
 
 const refreshGame = () => {
 	config.score = 0;
+	config.maxStep = 10;
 	drawScore();
 	drawSpeed();
 
