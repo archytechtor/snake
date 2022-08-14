@@ -13,14 +13,9 @@ body {
   align-items: center;
 }
 
-.header {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  display: flex;
-  justify-content: space-between;
-}
-
 .score {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   padding: 0.5rem 1rem;
   min-width: 10rem;
   height: 3rem;
@@ -29,11 +24,22 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 0.5rem;
+}
+
+.title {
+  color: rgba(255, 255, 255, 0.3)
 }
 
 .count {
   font-size: 2rem;
   color: #76d04a;
+  font-weight: bold;
+}
+
+.speed {
+  font-size: 2rem;
+  color: #ccc;
   font-weight: bold;
 }
 

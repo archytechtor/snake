@@ -1,7 +1,20 @@
+const speed = {
+	10: 1,
+	9: 2,
+	8: 3,
+	7: 4,
+	6: 5,
+	5: 6,
+	4: 7,
+	3: 8,
+	2: 9,
+	1: 10
+}
+
 const config = {
   score: 0,
 	step: 0,
-	maxStep: 6,
+	maxStep: 10,
 	sizeCell: 16,
 	sizeBerry: 6,
   swipe: {
@@ -24,15 +37,29 @@ const config = {
 
 const canvas = document.querySelector('#canvas');
 const scoreBlock = document.querySelector('.score .count');
+const speedBlock = document.querySelector('.score .speed');
 const context = canvas.getContext('2d');
 
 const scoreUp = () => {
 	config.score++;
+	speedUp();
 	drawScore();
+}
+
+const speedUp = () => {
+	if (config.maxStep > 2) {
+		config.maxStep -= 0.05;
+	}
+
+	drawSpeed();
 }
 
 const drawScore = () => {
 	scoreBlock.innerHTML = config.score;
+}
+
+const drawSpeed = () => {
+	speedBlock.innerHTML = speed[Math.ceil(config.maxStep)];
 }
 
 const getRandom = (min, max) => {
@@ -74,6 +101,7 @@ const collisionBorder = () => {
 const refreshGame = () => {
 	config.score = 0;
 	drawScore();
+	drawSpeed();
 
 	config.snake.x = 160;
 	config.snake.y = 160;
@@ -104,12 +132,13 @@ const drawSnake = () => {
 		if (el.x === config.berry.x && el.y === config.berry.y) {
 			config.snake.maxTails++;
 			scoreUp();
+			speedUp();
 			randomPositionBerry();
 		}
 
 		for (let i = index + 1; i < config.snake.tails.length; i++) {
 			if (el.x === config.snake.tails[i].x && el.y === config.snake.tails[i].y) {
-        alert(`Ты набрал ${config.score} очков!`);
+        alert(`Ты набрал очков: ${config.score}`);
 				refreshGame();
 			}
 		}
@@ -132,6 +161,7 @@ const gameLoop = () => {
 }
 
 drawScore();
+drawSpeed();
 requestAnimationFrame(gameLoop);
 
 document.addEventListener('touchstart', (e) => {
