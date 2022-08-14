@@ -134,8 +134,6 @@ const gameLoop = () => {
 drawScore();
 requestAnimationFrame(gameLoop);
 
-document.getElementById('game').addEventListener('touchmove', (e) => e.preventDefault());
-
 document.addEventListener('touchstart', (e) => {
   config.swipe.xDown = e.touches[0].clientX;
   config.swipe.yDown = e.touches[0].clientY;
