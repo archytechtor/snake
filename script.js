@@ -105,7 +105,7 @@ const drawSnake = () => {
 
 		for (let i = index + 1; i < config.snake.tails.length; i++) {
 			if (el.x === config.snake.tails[i].x && el.y === config.snake.tails[i].y) {
-        alert(`Ты набрал ${config.score} очков!`);
+        alert(`Ты набрал очков: ${config.score}`);
 				refreshGame();
 			}
 		}
