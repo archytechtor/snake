@@ -134,14 +134,14 @@ const gameLoop = () => {
 drawScore();
 requestAnimationFrame(gameLoop);
 
+document.getElementById('game').addEventListener('touchmove', (e) => e.preventDefault());
+
 document.addEventListener('touchstart', (e) => {
-  console.log('touchstart', e.touches);
   config.swipe.xDown = e.touches[0].clientX;
   config.swipe.yDown = e.touches[0].clientY;
 });
 
 document.addEventListener('touchmove', (e) => {
-  console.log('touchmove', e.touches);
   if (!config.swipe.xDown || !config.swipe.yDown) {
     return;
   }
